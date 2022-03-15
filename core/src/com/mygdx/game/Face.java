@@ -1,7 +1,5 @@
 package com.mygdx.game;
 
-import java.util.ArrayList;
-
 public class Face {
         String[][] faceMatrix = new String[3][3];
         public Face(String piece){

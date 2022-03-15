@@ -36,18 +36,33 @@ public class Rubik extends ApplicationAdapter {
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
+		Cube Rubix = new Cube();
+		Moves.Move("U", Rubix);
+		Moves.Move("L", Rubix);
+		Moves.Move("BI", Rubix);
+		Moves.Move("U2", Rubix);
+		Moves.Move("RI", Rubix);
+		String[] faceNames = {"WHITE", "RED", "YELLOW", "ORANGE", "GREEN", "BLUE"};
+		int faceIndex = 1;
 		shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-		shapeRenderer.setColor(Color.WHITE);
-		shapeRenderer.rect(240, 360, 64, 64);
-		shapeRenderer.rect(320, 360, 64, 64);
-		shapeRenderer.rect(400, 360, 64, 64);
-		shapeRenderer.rect(240, 280, 64, 64);
-		shapeRenderer.rect(320, 280, 64, 64);
-		shapeRenderer.rect(400, 280, 64, 64);
-		shapeRenderer.rect(240, 200, 64, 64);
-		shapeRenderer.rect(320, 200, 64, 64);
-		shapeRenderer.rect(400, 200, 64, 64);
-
+		for(int i = 0; i<3; i++){
+			for(int j=0;j<3;j++){
+				if(Rubix.Faces.get(faceNames[faceIndex]).faceMatrix[i][j].equals("WHITE")){
+					shapeRenderer.setColor(Color.WHITE);
+				}else if(Rubix.Faces.get(faceNames[faceIndex]).faceMatrix[i][j].equals("BLUE")){
+					shapeRenderer.setColor(Color.BLUE);
+				}else if(Rubix.Faces.get(faceNames[faceIndex]).faceMatrix[i][j].equals("GREEN")){
+					shapeRenderer.setColor(Color.GREEN);
+				}else if(Rubix.Faces.get(faceNames[faceIndex]).faceMatrix[i][j].equals("YELLOW")){
+					shapeRenderer.setColor(Color.YELLOW);
+				}else if(Rubix.Faces.get(faceNames[faceIndex]).faceMatrix[i][j].equals("RED")){
+					shapeRenderer.setColor(Color.RED);
+				}else if(Rubix.Faces.get(faceNames[faceIndex]).faceMatrix[i][j].equals("ORANGE")){
+					shapeRenderer.setColor(Color.ORANGE);
+				}
+				shapeRenderer.rect(240+(j*80), 360-(i*80), 64, 64);
+			}
+		}
 		shapeRenderer.end();
 		batch.end();
 
