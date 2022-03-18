@@ -8,8 +8,8 @@ import com.mygdx.game.Rubik;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-		config.setTitle("Drop");
-		config.setWindowedMode(800, 480);
+		config.setTitle("Liam's Rubiks cube solver");
+		config.setWindowedMode(576, 768);
 		config.useVsync(true);
 		config.setForegroundFPS(60);
 		new Lwjgl3Application(new Rubik(), config);

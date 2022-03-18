@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import java.util.ArrayList;
+
 public class Moves {
     public static void Move(String moveName, Cube rubik){
         Cube tempCube = new Cube();
@@ -202,6 +204,26 @@ public class Moves {
                 }
             }
         }
+    }
+    public static String findSqaure(Boolean cornerPiece, Cube Rubik, String... face){
+        String[] faceNames = {"WHITE", "RED", "YELLOW", "ORANGE", "GREEN", "BLUE"};
+        ArrayList<String> possibleSquares = new ArrayList<String>();
+        if(cornerPiece){
+            for(int faceIndex=0;faceIndex<6;faceIndex++) {
+                for (int i = 0; i < 3; i = i + 2) {
+                    for (int j = 0; j < 3; j = j + 2) {
+                        for(String square: face) {
+                            if (Rubik.Faces.get(faceNames[faceIndex]).faceMatrix[i][j].equals(square)) {
+                                possibleSquares.add(faceNames[faceIndex] + "-" + square + "-" + Integer.toString(i) + "-" + Integer.toString(j));
+                            }
+                        }
+                    }
+                }
+            }
+        }else{
+
+        }
+        return "e";
     }
     public static void setCube(Cube oldCube, Cube newCube){
         String[] faceNames = {"WHITE", "RED", "YELLOW", "ORANGE", "GREEN", "BLUE"};
