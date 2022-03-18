@@ -43,11 +43,12 @@ public class Rubik extends ApplicationAdapter {
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		Cube Rubix = new Cube();
+		makeMove("F", Rubix);
+		makeMove("R", Rubix);
 		makeMove("U", Rubix);
-		makeMove("L", Rubix);
-		makeMove("BI", Rubix);
-		makeMove("U2", Rubix);
 		makeMove("RI", Rubix);
+		makeMove("UI", Rubix);
+		makeMove("FI", Rubix);
 		batch.begin();
 		renderCube(Rubix);
 		shapeRenderer.end();

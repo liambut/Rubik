@@ -11,8 +11,8 @@ public class Moves {
                 rotateMatrix(true, rubik.Faces.get("WHITE").faceMatrix);
                 for(int i = 0; i<3; i++){
                     tempCube.Faces.get("GREEN").faceMatrix[0][i] = rubik.Faces.get("RED").faceMatrix[0][i];
-                    tempCube.Faces.get("ORANGE").faceMatrix[0][i] = rubik.Faces.get("GREEN").faceMatrix[0][i];
-                    tempCube.Faces.get("BLUE").faceMatrix[0][i] = rubik.Faces.get("ORANGE").faceMatrix[0][i];
+                    tempCube.Faces.get("ORANGE").faceMatrix[2][i] = rubik.Faces.get("GREEN").faceMatrix[0][i];
+                    tempCube.Faces.get("BLUE").faceMatrix[0][i] = rubik.Faces.get("ORANGE").faceMatrix[2][i];
                     tempCube.Faces.get("RED").faceMatrix[0][i] = rubik.Faces.get("BLUE").faceMatrix[0][i];
                 }
                 break;
@@ -20,8 +20,8 @@ public class Moves {
                 rotateMatrix(false, rubik.Faces.get("WHITE").faceMatrix);
                 for(int i = 0; i<3; i++){
                     tempCube.Faces.get("BLUE").faceMatrix[0][i] = rubik.Faces.get("RED").faceMatrix[0][i];
-                    tempCube.Faces.get("ORANGE").faceMatrix[0][i] = rubik.Faces.get("BLUE").faceMatrix[0][i];
-                    tempCube.Faces.get("GREEN").faceMatrix[0][i] = rubik.Faces.get("ORANGE").faceMatrix[0][i];
+                    tempCube.Faces.get("ORANGE").faceMatrix[2][i] = rubik.Faces.get("BLUE").faceMatrix[0][i];
+                    tempCube.Faces.get("GREEN").faceMatrix[0][i] = rubik.Faces.get("ORANGE").faceMatrix[2][i];
                     tempCube.Faces.get("RED").faceMatrix[0][i] = rubik.Faces.get("GREEN").faceMatrix[0][i];
                 }
                 break;
@@ -29,9 +29,9 @@ public class Moves {
                 rotateMatrix(true, rubik.Faces.get("WHITE").faceMatrix);
                 rotateMatrix(true, rubik.Faces.get("WHITE").faceMatrix);
                 for(int i = 0; i<3; i++){
-                    tempCube.Faces.get("ORANGE").faceMatrix[0][i] = rubik.Faces.get("RED").faceMatrix[0][i];
+                    tempCube.Faces.get("ORANGE").faceMatrix[2][i] = rubik.Faces.get("RED").faceMatrix[0][i];
                     tempCube.Faces.get("BLUE").faceMatrix[0][i] = rubik.Faces.get("GREEN").faceMatrix[0][i];
-                    tempCube.Faces.get("RED").faceMatrix[0][i] = rubik.Faces.get("ORANGE").faceMatrix[0][i];
+                    tempCube.Faces.get("RED").faceMatrix[0][i] = rubik.Faces.get("ORANGE").faceMatrix[2][i];
                     tempCube.Faces.get("GREEN").faceMatrix[0][i] = rubik.Faces.get("BLUE").faceMatrix[0][i];
                 }
                 break;
@@ -39,8 +39,8 @@ public class Moves {
                 rotateMatrix(true, rubik.Faces.get("YELLOW").faceMatrix);
                 for(int i = 0; i<3; i++){
                     tempCube.Faces.get("GREEN").faceMatrix[2][i] = rubik.Faces.get("RED").faceMatrix[2][i];
-                    tempCube.Faces.get("ORANGE").faceMatrix[2][i] = rubik.Faces.get("GREEN").faceMatrix[2][i];
-                    tempCube.Faces.get("BLUE").faceMatrix[2][i] = rubik.Faces.get("ORANGE").faceMatrix[2][i];
+                    tempCube.Faces.get("ORANGE").faceMatrix[0][i] = rubik.Faces.get("GREEN").faceMatrix[2][i];
+                    tempCube.Faces.get("BLUE").faceMatrix[2][i] = rubik.Faces.get("ORANGE").faceMatrix[0][i];
                     tempCube.Faces.get("RED").faceMatrix[2][i] = rubik.Faces.get("BLUE").faceMatrix[2][i];
                 }
                 break;
@@ -48,8 +48,8 @@ public class Moves {
                 rotateMatrix(false, rubik.Faces.get("YELLOW").faceMatrix);
                 for(int i = 0; i<3; i++){
                     tempCube.Faces.get("BLUE").faceMatrix[2][i] = rubik.Faces.get("RED").faceMatrix[2][i];
-                    tempCube.Faces.get("ORANGE").faceMatrix[2][i] = rubik.Faces.get("BLUE").faceMatrix[2][i];
-                    tempCube.Faces.get("GREEN").faceMatrix[2][i] = rubik.Faces.get("ORANGE").faceMatrix[2][i];
+                    tempCube.Faces.get("ORANGE").faceMatrix[0][i] = rubik.Faces.get("BLUE").faceMatrix[2][i];
+                    tempCube.Faces.get("GREEN").faceMatrix[2][i] = rubik.Faces.get("ORANGE").faceMatrix[0][i];
                     tempCube.Faces.get("RED").faceMatrix[2][i] = rubik.Faces.get("GREEN").faceMatrix[2][i];
                 }
                 break;
@@ -57,9 +57,9 @@ public class Moves {
                 rotateMatrix(true, rubik.Faces.get("YELLOW").faceMatrix);
                 rotateMatrix(true, rubik.Faces.get("YELLOW").faceMatrix);
                 for(int i = 0; i<3; i++){
-                    tempCube.Faces.get("ORANGE").faceMatrix[2][i] = rubik.Faces.get("RED").faceMatrix[2][i];
+                    tempCube.Faces.get("ORANGE").faceMatrix[0][i] = rubik.Faces.get("RED").faceMatrix[2][i];
                     tempCube.Faces.get("BLUE").faceMatrix[2][i] = rubik.Faces.get("GREEN").faceMatrix[2][i];
-                    tempCube.Faces.get("RED").faceMatrix[2][i] = rubik.Faces.get("ORANGE").faceMatrix[2][i];
+                    tempCube.Faces.get("RED").faceMatrix[2][i] = rubik.Faces.get("ORANGE").faceMatrix[0][i];
                     tempCube.Faces.get("GREEN").faceMatrix[2][i] = rubik.Faces.get("BLUE").faceMatrix[2][i];
                 }
                 break;
@@ -149,9 +149,9 @@ public class Moves {
             case "B":
                 rotateMatrix(true, rubik.Faces.get("ORANGE").faceMatrix);
                 for(int i = 0; i<3; i++){
-                    tempCube.Faces.get("GREEN").faceMatrix[0][i] = rubik.Faces.get("WHITE").faceMatrix[0][i];
-                    tempCube.Faces.get("YELLOW").faceMatrix[0][i] = rubik.Faces.get("GREEN").faceMatrix[i][0];
-                    tempCube.Faces.get("BLUE").faceMatrix[i][2] = rubik.Faces.get("YELLOW").faceMatrix[0][i];
+                    tempCube.Faces.get("GREEN").faceMatrix[i][0] = rubik.Faces.get("WHITE").faceMatrix[0][i];
+                    tempCube.Faces.get("YELLOW").faceMatrix[2][i] = rubik.Faces.get("GREEN").faceMatrix[i][0];
+                    tempCube.Faces.get("BLUE").faceMatrix[i][2] = rubik.Faces.get("YELLOW").faceMatrix[2][i];
                     tempCube.Faces.get("WHITE").faceMatrix[0][i] = rubik.Faces.get("BLUE").faceMatrix[i][2];
                 }
                 break;
@@ -160,18 +160,18 @@ public class Moves {
                 for(int i = 0; i<3; i++){
                     tempCube.Faces.get("BLUE").faceMatrix[i][2] = rubik.Faces.get("WHITE").faceMatrix[0][i];
                     tempCube.Faces.get("WHITE").faceMatrix[0][i] = rubik.Faces.get("GREEN").faceMatrix[i][0];
-                    tempCube.Faces.get("GREEN").faceMatrix[0][i] = rubik.Faces.get("YELLOW").faceMatrix[0][i];
-                    tempCube.Faces.get("YELLOW").faceMatrix[0][i] = rubik.Faces.get("BLUE").faceMatrix[i][2];
+                    tempCube.Faces.get("GREEN").faceMatrix[i][0] = rubik.Faces.get("YELLOW").faceMatrix[2][i];
+                    tempCube.Faces.get("YELLOW").faceMatrix[2][i] = rubik.Faces.get("BLUE").faceMatrix[i][2];
                 }
                 break;
             case "B2":
                 rotateMatrix(true, rubik.Faces.get("ORANGE").faceMatrix);
                 rotateMatrix(true, rubik.Faces.get("ORANGE").faceMatrix);
                 for(int i = 0; i<3; i++){
-                    tempCube.Faces.get("YELLOW").faceMatrix[0][i] = rubik.Faces.get("WHITE").faceMatrix[0][i];
+                    tempCube.Faces.get("YELLOW").faceMatrix[2][i] = rubik.Faces.get("WHITE").faceMatrix[0][i];
                     tempCube.Faces.get("BLUE").faceMatrix[i][2] = rubik.Faces.get("GREEN").faceMatrix[i][0];
-                    tempCube.Faces.get("WHITE").faceMatrix[0][i] = rubik.Faces.get("YELLOW").faceMatrix[0][i];
-                    tempCube.Faces.get("GREEN").faceMatrix[0][i] = rubik.Faces.get("BLUE").faceMatrix[i][2];
+                    tempCube.Faces.get("WHITE").faceMatrix[0][i] = rubik.Faces.get("YELLOW").faceMatrix[2][i];
+                    tempCube.Faces.get("GREEN").faceMatrix[i][0] = rubik.Faces.get("BLUE").faceMatrix[i][2];
                 }
                 break;
         }
