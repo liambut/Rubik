@@ -15,12 +15,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.*;
 import com.badlogic.gdx.graphics.Texture;
+import java.util.concurrent.TimeUnit;
 
 public class Rubik extends ApplicationAdapter {
 	private ShapeRenderer shapeRenderer;
 	private Rectangle bucket;
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
+	Stage stage;
+	TextButton button;
+	TextButtonStyle textButtonStyle;
+	BitmapFont font;
+	Skin skin;
+	TextureAtlas buttonAtlas;
 	@Override
 	public void create () {
 		shapeRenderer = new ShapeRenderer();
@@ -35,18 +42,20 @@ public class Rubik extends ApplicationAdapter {
 		ScreenUtils.clear(0, 0, 0, 1);
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
 		Cube Rubix = new Cube();
-		Moves.Move("U", Rubix);
-		Moves.Move("L", Rubix);
-		Moves.Move("BI", Rubix);
-		Moves.Move("U2", Rubix);
-		Moves.Move("RI", Rubix);
+		makeMove("U", Rubix);
+		makeMove("L", Rubix);
+		makeMove("BI", Rubix);
+		makeMove("U2", Rubix);
+		makeMove("RI", Rubix);
+		batch.begin();
 		renderCube(Rubix);
 		shapeRenderer.end();
 		batch.end();
 	}
-
+	public void makeMove(String moveName, Cube Rubix){
+		Moves.Move(moveName, Rubix);
+	}
 	public void renderCube(Cube Rubix){
 		String[] faceNames = {"GREEN","YELLOW", "RED", "WHITE", "BLUE", "ORANGE"};
 		shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
