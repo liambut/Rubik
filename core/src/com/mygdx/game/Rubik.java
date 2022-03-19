@@ -39,7 +39,7 @@ public class Rubik extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		Rubix = new Cube();
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 800, 480);
+		camera.setToOrtho(false, 576, 768);
 	}
 	private final IntSet downKeys = new IntSet(20);
 

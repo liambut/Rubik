@@ -208,11 +208,13 @@ public class Moves {
     public static String findSqaure(Boolean cornerPiece, Cube Rubik, String... face){
         String[] faceNames = {"WHITE", "RED", "YELLOW", "ORANGE", "GREEN", "BLUE"};
         ArrayList<String> possibleSquares = new ArrayList<String>();
+        ArrayList<String> faces = new ArrayList<String>();
         if(cornerPiece){
             for(int faceIndex=0;faceIndex<6;faceIndex++) {
                 for (int i = 0; i < 3; i = i + 2) {
                     for (int j = 0; j < 3; j = j + 2) {
                         for(String square: face) {
+                            faces.add(square);
                             if (Rubik.Faces.get(faceNames[faceIndex]).faceMatrix[i][j].equals(square)) {
                                 possibleSquares.add(faceNames[faceIndex] + "-" + square + "-" + Integer.toString(i) + "-" + Integer.toString(j));
                             }
@@ -220,6 +222,11 @@ public class Moves {
                     }
                 }
             }
+            int squareindex = possibleSquares.size();
+            for(int i = 0; i< squareindex; i++){
+                String[] squareCat = possibleSquares.get(i).split("-");
+            }
+
         }else{
 
         }
