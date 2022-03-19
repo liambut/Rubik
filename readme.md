@@ -11,5 +11,5 @@ R- blue face
 L- green face
 B- orange face
 D- yellow face
-
+M- reset cube
 Enjoy and keep an eye on the project as new functionality will be added regularly!

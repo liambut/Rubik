@@ -104,6 +104,10 @@ public class Rubik extends ApplicationAdapter {
 		if(downKeys.contains(Input.Keys.F)){
 		makeMove("F", Rubix);
 		}
+		if(downKeys.contains(Input.Keys.SPACE)){
+			Cube tempCube = new Cube();
+			Moves.setCube(Rubix, tempCube);
+		}
 		if(downKeys.contains(Input.Keys.R)){
 			makeMove("R", Rubix);
 		}
