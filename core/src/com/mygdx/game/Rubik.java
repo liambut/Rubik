@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,6 +11,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.IntSet;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.Gdx;
@@ -27,32 +30,95 @@ public class Rubik extends ApplicationAdapter {
 	TextButtonStyle textButtonStyle;
 	BitmapFont font;
 	Skin skin;
+	Cube Rubix;
 	TextureAtlas buttonAtlas;
 	@Override
 	public void create () {
 		shapeRenderer = new ShapeRenderer();
 		shapeRenderer.setAutoShapeType(true);
 		batch = new SpriteBatch();
+		Rubix = new Cube();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 800, 480);
 	}
+	private final IntSet downKeys = new IntSet(20);
 
+	private InputAdapter inputAdapter = new InputAdapter(){
+		public boolean keyDown (int keycode) {
+			downKeys.add(keycode);
+			if (downKeys.size >= 2){
+				onMultipleKeysDown();
+			}else{
+				setMove();
+			}
+
+			return true;
+		}
+
+		public boolean keyUp (int keycode) {
+			downKeys.remove(keycode);
+			return true;
+		}
+	};
+
+	private void onMultipleKeysDown (){
+		if (downKeys.contains(Input.Keys.SHIFT_LEFT) && downKeys.contains(Input.Keys.L)){
+			if (downKeys.size == 2){
+				makeMove("LI", Rubix);
+			}
+		}
+		if (downKeys.contains(Input.Keys.SHIFT_LEFT) && downKeys.contains(Input.Keys.R)){
+			if (downKeys.size == 2){
+				makeMove("RI", Rubix);
+			}
+		}
+		if (downKeys.contains(Input.Keys.SHIFT_LEFT) && downKeys.contains(Input.Keys.U)){
+			if (downKeys.size == 2){
+				makeMove("UI", Rubix);
+			}
+		}
+		if (downKeys.contains(Input.Keys.SHIFT_LEFT) && downKeys.contains(Input.Keys.B)){
+			if (downKeys.size == 2){
+				makeMove("BI", Rubix);
+			}
+		}
+		if (downKeys.contains(Input.Keys.SHIFT_LEFT) && downKeys.contains(Input.Keys.D)){
+			if (downKeys.size == 2){
+				makeMove("DI", Rubix);
+			}
+		}
+		if (downKeys.contains(Input.Keys.SHIFT_LEFT) && downKeys.contains(Input.Keys.F)){
+			if (downKeys.size == 2){
+				makeMove("FI", Rubix);
+			}
+		}
+	}
 	@Override
 	public void render () {
+		Gdx.input.setInputProcessor(inputAdapter);
 		ScreenUtils.clear(0, 0, 0, 1);
-		camera.update();
-		batch.setProjectionMatrix(camera.combined);
-		Cube Rubix = new Cube();
-		makeMove("F", Rubix);
-		makeMove("R", Rubix);
-		makeMove("U", Rubix);
-		makeMove("RI", Rubix);
-		makeMove("UI", Rubix);
-		makeMove("FI", Rubix);
-		batch.begin();
 		renderCube(Rubix);
 		shapeRenderer.end();
-		batch.end();
+	}
+	public void setMove(){
+		if(downKeys.contains(Input.Keys.F)){
+		makeMove("F", Rubix);
+		}
+		if(downKeys.contains(Input.Keys.R)){
+			makeMove("R", Rubix);
+		}
+		if(downKeys.contains(Input.Keys.U)){
+			makeMove("U", Rubix);
+		}
+		if(downKeys.contains(Input.Keys.L)){
+			makeMove("L", Rubix);
+		}
+		if(downKeys.contains(Input.Keys.B)){
+			makeMove("B", Rubix);
+		}
+		if(downKeys.contains(Input.Keys.D)){
+			makeMove("D", Rubix);
+		}
 	}
 	public void makeMove(String moveName, Cube Rubix){
 		Moves.Move(moveName, Rubix);

@@ -35,7 +35,7 @@ public class Moves {
                     tempCube.Faces.get("GREEN").faceMatrix[0][i] = rubik.Faces.get("BLUE").faceMatrix[0][i];
                 }
                 break;
-            case "D":
+            case "DI":
                 rotateMatrix(true, rubik.Faces.get("YELLOW").faceMatrix);
                 for(int i = 0; i<3; i++){
                     tempCube.Faces.get("GREEN").faceMatrix[2][i] = rubik.Faces.get("RED").faceMatrix[2][i];
@@ -44,7 +44,7 @@ public class Moves {
                     tempCube.Faces.get("RED").faceMatrix[2][i] = rubik.Faces.get("BLUE").faceMatrix[2][i];
                 }
                 break;
-            case "DI":
+            case "D":
                 rotateMatrix(false, rubik.Faces.get("YELLOW").faceMatrix);
                 for(int i = 0; i<3; i++){
                     tempCube.Faces.get("BLUE").faceMatrix[2][i] = rubik.Faces.get("RED").faceMatrix[2][i];
